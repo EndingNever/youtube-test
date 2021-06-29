@@ -1,0 +1,17 @@
+.sidenav {
+  height: 800px;
+  width: 250px;
+  position: fixed;
+  top: 150px;
+  left: 88%;
+  background-color: green;
+  z-index: 0;
+  padding-top: 13%;
+
+}
+
+.sidenav a {
+  display: block;
+  font-size: 1.5em;
+  padding: 20px 8px 20px 8px;
+}
