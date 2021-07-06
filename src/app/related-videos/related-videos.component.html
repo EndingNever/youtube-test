@@ -1,5 +1,20 @@
-  <div class="sidenav">
+  <!-- <div class="sidenav" (click)="getData()">
     <a href="#">About</a>
     <a href="#">Services</a>
     <a href="#">Clients</a>
+
+  </div> -->
+<div class="container-fluid d-flex justify-content-end">
+  <div class="row me-2">
+    <div class="col">
+      <div class="card">
+        <ul class="list-group list-group-flush ">
+          <li class="list-group-item" *ngFor = "let video of videos">
+            {{ video.snippet.thumbnails.default.url }}
+          </li>
+
+        </ul>
+      </div>
+    </div>
   </div>
+</div>
