@@ -10,23 +10,19 @@ import { YoutubeApiService } from '../youtube-api.service';
 export class NavbarComponent implements OnInit {
     videos: any;
     @ViewChild('videoName') videoName!: ElementRef;
-  constructor(private youtube:YoutubeApiService) { }
+  constructor(private youTube:YoutubeApiService) { }
 
   ngOnInit() {
-  //  this.youtube.getVideo("programming").subscribe((data)=>{
-  //  console.log(data);
-  //  this.videos = data.items;
-   //})
+    //  this.youTube.getVideo("programming").subscribe((data)=>{
+    // console.log(data);
+    //  this.videos = data.items;
+    // })
   }
   getData(){
     var videoName = this.videoName.nativeElement.value;
-    this.youtube.getVideo(videoName).subscribe((data)=>{
+    this.youTube.getVideo(videoName).subscribe((data)=>{
       console.log(data);
       this.videos = data.items;
       })
   }
-  find(){
-
-  }
-
 }

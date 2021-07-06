@@ -10,7 +10,7 @@
       border-radius: 4px;
       font-size: 16px;
       background-color: white;
-      background-image: url('searchicon.png');
+      /* background-image: url('searchicon.png'); */
       background-position: 10px 10px; 
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
@@ -31,9 +31,9 @@
       <p></p>
       <button (click)="getData()" class="btn btn-primary">Search</button>
       <ul *ngFor="let video of videos">
-        <a target= "_blank" href="http://www.youtube.com/channel/{{video.id.channelId}}">
-        <img src="{{video.snippet.thumbnails.medium.url}}">
-        {{video.snippet.channelTitle}}
+        <a target= "_blank" href="http://www.youtube.com/video/{{video.id.videoId}}">
+         <img src="{{video.snippet.thumbnails.medium.url}}">
+        {{video.snippet.title}}
         </a>
       </ul>
     </form>
