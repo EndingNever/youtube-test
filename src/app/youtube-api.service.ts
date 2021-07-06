@@ -15,12 +15,12 @@ export class YoutubeApiService {
   getVideo(videoName: string): Observable<any>{
     
 
-    const API_KEY = "AIzaSyCutQUXM4wKtjIUw-9XJTQF-Qx3NpgU2SA"
+    const API_KEY = "AIzaSyAP66m-ld0SQDnXhrU5QFCRqlKkbSfo6Rs"
     const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$" + videoName +"&type=video&videoCaption=closedCaption&key=" + API_KEY + "&maxresults=50" 
     return this.http.get<any>(url)
-    .pipe(
-      map((response: any) => response.items)
-    )
+   
+    
   }
 }
-
+// .pipe(
+ // map((response: any) => response.items)

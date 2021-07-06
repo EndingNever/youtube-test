@@ -1,5 +1,6 @@
 
 <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style> 
     input[type=text] {
@@ -23,11 +24,18 @@
     </style>
     </head>
     <body>
-    
+    <h2>Welcome to Mini-youTube Player!</h2>
     <p>Search here:</p>
-    
     <form>
-      <input type="text" name="search" placeholder="Search..">
+      <input #videoName type="text" name="search" placeholder="Search..">
+      <p></p>
+      <button (click)="getData()" class="btn btn-primary">Search</button>
+      <ul *ngFor="let video of videos">
+        <a target= "_blank" href="http://www.youtube.com/channel/{{video.id.channelId}}">
+        <img src="{{video.snippet.thumbnails.medium.url}}">
+        {{video.snippet.channelTitle}}
+        </a>
+      </ul>
     </form>
     
     </body> 
