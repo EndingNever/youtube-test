@@ -1,14 +1,14 @@
-.sidenav {
-  /* height: 800px;
-  width: 250px;
+/* .sidenav {
+  height: 800px;
+  width: 350px;
   position: fixed;
   top: 150px;
   left: 88%;
   background-color: green;
   z-index: 0;
-  padding-top: 13%; */
+  padding-top: 13%;
 
-}
+} */
 
 /* .sidenav a {
   display: block;
@@ -25,5 +25,6 @@
   height: 100px;
 }
 
-.card {
+.row {
+  border: 2px solid red;
 }
