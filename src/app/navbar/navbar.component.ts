@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { YoutubeApiService } from '../youtube-api.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -6,13 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+    videos: any;
+    @ViewChild('videoName') videoName!: ElementRef;
+  constructor(private youTube:YoutubeApiService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    
+    this.youTube.getVideo("coding").subscribe((data)=>{
+      console.log(data);
+       this.videos = data.items;
+      })
   }
-  find(){
-
+  getData(){
+    var videoName = this.videoName.nativeElement.value;
+    this.youTube.getVideo(videoName).subscribe((data)=>{
+      console.log(data);
+      this.videos = data.items;
+      })
   }
-
 }
