@@ -15,10 +15,9 @@ export class RelatedVideosComponent implements OnInit {
   constructor(private youtube: YoutubeApiService) { }
 
   ngOnInit(): void {
-    this.youtube.getVideo("test").subscribe((data) => {
+    this.youtube.getVideo("music").subscribe((data) => {
       console.log(data)
       this.videos = data
-      console.log(this.videos)
     })
   }
 
