@@ -1,5 +1,6 @@
 
 <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     input[type=text] {
@@ -10,7 +11,9 @@
       font-size: 16px;
       background-color: white;
       /* background-image: url('searchicon.png'); */
-      background-position: 10px 10px;
+
+      background-position: 10px 10px; 
+
       background-repeat: no-repeat;
       padding: 12px 20px 12px 40px;
       -webkit-transition: width 0.4s ease-in-out;
@@ -24,11 +27,20 @@
     </head>
     <body>
 
+    <h2>Welcome to Mini-youTube Player!</h2>
     <p>Search here:</p>
-
-    <form>
-      <input type="text" name="search" placeholder="Search..">
-    </form>
-
-    </body>
+   
+      <input #videoName type="text" name="search" placeholder="Search..">
+      <p></p>
+      <button (click)="getData()" class="btn btn-primary">Search</button>
+      <ul *ngFor="let video of videos">
+        <a target= "_blank" href="http://www.youtube.com/video/{{video.id.videoId}}">
+         <img src="{{video.snippet.thumbnails.medium.url}}">
+        </a>
+        {{video.snippet.title}}
+      </ul>
+   
+    
+    </body> 
+  
 

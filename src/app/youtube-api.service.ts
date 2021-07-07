@@ -17,10 +17,12 @@ export class YoutubeApiService {
 
     const API_KEY = "AIzaSyAQOLkb5oLZcurlIaTE-WNYQIEHvjDzg-w"
     const url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$" + videoName +"&type=video&videoCaption=closedCaption&key=" + API_KEY + "&maxresults=50"
+
     return this.http.get<any>(url)
-    .pipe(
-      map((response: any) => response.items)
-    )
-  }
+   
+    
+    }
 }
 
+// .pipe(
+ // map((response: any) => response.items)
