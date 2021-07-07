@@ -13,10 +13,11 @@ export class NavbarComponent implements OnInit {
   constructor(private youTube:YoutubeApiService) { }
 
   ngOnInit() {
-    //  this.youTube.getVideo("programming").subscribe((data)=>{
-    // console.log(data);
-    //  this.videos = data.items;
-    // })
+    
+    this.youTube.getVideo("coding").subscribe((data)=>{
+      console.log(data);
+       this.videos = data.items;
+      })
   }
   getData(){
     var videoName = this.videoName.nativeElement.value;
