@@ -35,11 +35,31 @@
       <button (click)="getData()" class="btn btn-primary">Search</button>
       <ul *ngFor="let video of videos">
         <a target= "_blank" href="http://www.youtube.com/video/{{video.id.videoId}}">
-         <img src="{{video.snippet.thumbnails.medium.url}}">
+         <!-- <img src="{{video.snippet.thumbnails.medium.url}}"> -->
         </a>
-        {{video.snippet.title}}
+        <!-- {{video.snippet.title}} -->
       </ul>
-   
+
+      <youtube-player *ngFor="let video of videos"
+      videoId="{{video.id.videoId}}" 
+      [height]="250" 
+      [width]="500" 
+      >
+    </youtube-player>
+
+      
+      <div class="container-fluid d-flex justify-content-end sidenav">
+        <div class="row me-2">
+          <div class="col">
+            <div class="card" style="width: 250px" *ngFor = "let video of videos">
+              <img class="card-img-top" src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
+              <a href="http://www.youtube.com/video/{{video.id.videoId}}"></a>
+                    {{video.snippet.title}}
+                  
+            </div>
+          </div>
+        </div>
+      </div>
     
     </body> 
   
