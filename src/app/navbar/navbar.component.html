@@ -1,9 +1,13 @@
-
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    input[type=text] {
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    input[type="text"] {
       width: 130px;
       box-sizing: border-box;
       border: 2px solid #ccc;
@@ -20,50 +24,79 @@
       transition: width 0.4s ease-in-out;
     }
 
-    input[type=text]:focus {
+    input[type="text"]:focus {
       width: 100%;
     }
-    </style>
-    </head>
-    <body>
-
-    <h2>Welcome to Mini-youTube Player!</h2>
-    <p>Search here:</p>
-
-      <input #videoName type="text" name="search" placeholder="Search..">
-      <p></p>
-      <button (click)="getData()" class="btn btn-primary">Search</button>
-      <ul *ngFor="let video of videos">
-        <a target= "_blank" href="http://www.youtube.com/video/{{video.id.videoId}}">
-         <!-- <img src="{{video.snippet.thumbnails.medium.url}}"> -->
-        </a>
-        <!-- {{video.snippet.title}} -->
-      </ul>
-      <div *ngFor="let video of videos; let i = index">
-        <youtube-player
-        videoId="{{video.id.videoId}}"
-        [height]="250"
-        [width]="500"
-        *ngIf="i===0"
-        >
-      </youtube-player>
-    </div>
-
-
-      <div class="container-fluid d-flex justify-content-end sidenav">
-        <div class="row me-2">
-          <div class="col" >
-            <div *ngFor = "let video of videos; let i = index">
-              <div class="card" style="width: 250px" *ngIf="i >= 1 && i <= 6">
-                <img class="card-img-top" src="{{video.snippet.thumbnails.high.url}}" alt="{{video.snippet.title}}">
-                <a href="http://www.youtube.com/video/{{video.id.videoId}}"></a>
-                {{video.snippet.title}}
-              </div>
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <h2>Welcome to Mini-youTube Player!</h2>
+        <p>Search here:</p>
+        <input #videoName type="text" name="search" placeholder="Search.." />
+        <p></p>
+        <button (click)="getData()" class="btn btn-primary">Search</button>
+        <div class="row">
+          <div class="col-8">
+            <ul *ngFor="let video of videos">
+              <a
+                target="_blank"
+                href="http://www.youtube.com/video/{{ video.id.videoId }}"
+              >
+              </a>
+            </ul>
+            <div *ngFor="let video of videos; let i = index">
+              <youtube-player
+                videoId="{{ video.id.videoId }}"
+                [height]="250"
+                [width]="500"
+                *ngIf="i === 0"
+              >
+              </youtube-player>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-4">
+        <div
+          class="card "
+          style="width: 10rem"
+          *ngFor="let video of videos; let i = index"
+        >
+          <div *ngIf="i >= 1 && i <= 6">
+            <a
+              target="_blank"
+              href="http://www.youtube.com/video/{{ video.id.videoId }}"
+            >
+              <img
+                class="card-img-top"
+                src="{{ video.snippet.thumbnails.high.url }}"
+                alt="{{ video.snippet.title }}"
+              />
+              <youtube-player>
+                videoId="{{ video.id.videoId }}" [height]="125" [width]="250"
+              </youtube-player>
+              <!-- <div class="card-body"> -->
+              <p class="card-text text-truncate">
+                {{ video.snippet.title }}
+              </p>
+              <!-- </div> -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row"> -->
 
-    </body>
+  <!-- <div class="container-fluid d-flex justify-content-end sidenav"> -->
+  <!-- <div class="row me-2"> -->
 
-
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div> -->
+</body>

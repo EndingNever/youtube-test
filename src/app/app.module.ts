@@ -8,13 +8,15 @@ import { RelatedVideosComponent } from './related-videos/related-videos.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     RelatedVideosComponent,
-    HomePageComponent
+    HomePageComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
