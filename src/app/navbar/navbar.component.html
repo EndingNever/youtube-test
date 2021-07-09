@@ -31,38 +31,47 @@
 </head>
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col-8">
+    <div class="row"> <!-- Top of the web page, -->
+      <div class="col-xs-12 col-lg-8 ">
         <h2>Welcome to Mini-youTube Player!</h2>
         <p>Search here:</p>
         <input #videoName type="text" name="search" placeholder="Search.." />
         <p></p>
-        <button (click)="getData()" class="btn btn-primary">Search</button>
-        <div class="row">
-          <div class="col-8">
-            <ul *ngFor="let video of videos">
+        <button (click)="getData()" class="btn btn-primary mb-2">Search</button> <!-- End of the first section, underneath the button is the video player-->
+        <div class="row"> <!-- The video player is within a nested row, this allows us to have the main video display next to the recommended videos -->
+          <div class="col-xs-12 col-lg-8 ">
+            <div *ngIf="start"> <!-- Start is initially true, enabling our video to be displayed on initialization. Start is set to false when the search button is pressed, this video will not display again -->
+              <youtube-player
+              videoId="A6AqjCFoP-s"
+              >
+            </youtube-player>
+          </div> <!-- End of our video -->
+
+          <!-- Unnecessary? Everything seems to work -->
+            <!-- <ul *ngFor="let video of videos"> 
               <a
                 target="_blank"
                 href="http://www.youtube.com/video/{{ video.id.videoId }}"
               >
               </a>
-            </ul>
-            <div *ngFor="let video of videos; let i = index">
+            </ul> --> 
+          <!-- Unnecessary? Everything seems to work   -->
+
+
+            <div *ngFor="let video of videos; let i = index"> <!-- Video player when searching -->
               <youtube-player
                 videoId="{{ video.id.videoId }}"
-                [height]="250"
-                [width]="500"
                 *ngIf="i === 0"
               >
               </youtube-player>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-4">
+      </div> 
+      <div class="col-12 col-md-4 mt-5"> <!-- Start of recommended videos on the side -->
         <div
-          class="card "
-          style="width: 10rem"
+          style="width: 13rem;"
+          class="card"
           *ngFor="let video of videos; let i = index"
         >
           <div *ngIf="i >= 1 && i <= 6">
@@ -75,28 +84,19 @@
                 src="{{ video.snippet.thumbnails.high.url }}"
                 alt="{{ video.snippet.title }}"
               />
-              <youtube-player>
+
+              <!-- <youtube-player>
                 videoId="{{ video.id.videoId }}" [height]="125" [width]="250"
-              </youtube-player>
+              </youtube-player> -->
               <!-- <div class="card-body"> -->
-              <p class="card-text text-truncate">
+
+              <p class="card-text text-truncate text-muted">
                 {{ video.snippet.title }}
               </p>
-              <!-- </div> -->
             </a>
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- End of Row 1 in which everything is contained-->
   </div>
-  <!-- <div class="row"> -->
-
-  <!-- <div class="container-fluid d-flex justify-content-end sidenav"> -->
-  <!-- <div class="row me-2"> -->
-
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- </div> -->
 </body>

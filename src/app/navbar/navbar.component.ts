@@ -10,6 +10,7 @@ import { Video } from '../youtube.interface';
 })
 export class NavbarComponent implements OnInit {
     videos: any;
+    start!:boolean;
 
     @ViewChild('videoName') videoName!: ElementRef;
   constructor(private youTube:YoutubeApiService) { }
@@ -19,10 +20,11 @@ export class NavbarComponent implements OnInit {
     //   console.log(data);
     //    this.videos = data.items;
     //   })
+    this.start = true; // Displays the video on startup
   }
   async getData(){
-
-   let videoName = this.videoName.nativeElement.value;
+    this.start = false; // Removes our video after search
+    let videoName = this.videoName.nativeElement.value;
     // this.videos = await this.youTube.getVideo(videoName).toPromise( )
 
 this.videos = [
